@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang ="en">
-    <head>
-        <link href="/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-        <link href="/css/reset.css" rel="stylesheet" type="text/css" media="all"/>
-        <title>Calculator JS</title>
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" media="all" />
+    <title>Calculator JS</title>
+</head>
+
+<body>
+    <div id="calc_container">
         <div id="calculator">
-            <div id="calc_screen"></div>
+            <div id="calc_screen">
+                <div id="calc_display"></div>
+                <div id="calc_input"></div>
+            </div>
             <div id="buttons-container">
+                <button id="allClear" class="clear">AC</button>
+                <button id="clearEntry" class="clear">CE</button>
+                <button id="remainder" class="operators">Mod</button>
                 <button id="divide" class="operators">&#247</button>
                 <button id="dig-7" class="digits">7</button>
                 <button id="dig-8" class="digits">8</button>
@@ -22,11 +33,14 @@
                 <button id="dig-2" class="digits">2</button>
                 <button id="dig-3" class="digits">3</button>
                 <button id="add" class="operators">&#43</button>
+                <button id="plus-add" class="sign">&#177</button>
                 <button id="dig-0" class="digits">0</button>
-                <button id="decimal" class="decimal">.</button>
-                <button id="equal" class="equal">=</button>
+                <button id="decimal">.</button>
+                <button id="equal">=</button>
             </div>
         </div>
-    </body>
-    <script></script>
+    </div>
+</body>
+<script src="script.js"></script>
+
 </html>
