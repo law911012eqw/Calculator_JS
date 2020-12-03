@@ -8,9 +8,11 @@ Last Modification Date: Dec 02 2020*/
 
 'use strict';
 /* global variables*/
+let arithmeticExpression = [];
+let arExp = {};
 let total = 0;
-let firstVal = "";
-let secondVal = "";
+let firstVal = '';
+let secondValue = '';
 
 /*DOM Elements*/
 const allClear = document.getElementById('allClear');
@@ -23,43 +25,52 @@ const modulus = document.getElementById('remainder');
 const equal = document.getElementById('equal');
 const calcDisplay = document.getElementById('calc_display');
 const calcInput = document.getElementById('calc_input');
-const ope = Array.from(document.querySelectorAll(".operators"));
+const op = Array.from(document.querySelectorAll(".operators"));
 const digitNodeList = [...document.querySelectorAll(".digits")];
 
 //functions inside the calculator function
 function calculator() {
+    let op = '';
     digitInput();
-    //operator(firstVal, secondVal);
+    getOp(op);
     resetAllVar();
+    //populateDisplay();
+    total = customEval(op);
 }
-/*const operator = (a,b) =>  {
-    ope.forEach(op => btn.addEventListener("click", ()))
-}*/
-
-/*probably not needed -- will fix later
-const whichOp = (a,b,op) {
-    return `${a} ${op} ${b}`;
-}*/
-total = equal.onclick = () => {
-    return operator = (firstVal, secondVal);
-}
-
-//It reads the input of the button text content when it is being clicked 
-function digitInput() {
-    digitNodeList.forEach(btn => btn.addEventListener("click", () => {
-        firstVal = btn.textContent;
-        return calcInput.textContent += firstVal;
+const getOp = (ope) => {
+    op.forEach(btn => btn.addEventListener("click", () => {
+        ope = btn.textContent;
+        calcDisplay.textContent += ope;
+        return ope;
     }));
 }
+// function populateDisplay(){
+//     arithmeticExpression.forEach(e => )
+// }
+function customEval(op) {
+    equal.onclick = () => {
+        return parseInt(firstVal) + op + parseInt(secondVal);
+    }
+}
+//It reads the input of the button text content when it is being clicked 
+function digitInput(op) {
+    digitNodeList.forEach(btn => btn.addEventListener("click", () => {
+        calcInput.textContent += btn.textContent;
+        firstVal += calcInput.textContent;
+        calcDisplay.textContent += btn.textContent;
+    }));
+    if (op !== undefined){
+        calcInput.textContent = '';
+    }
+    arithmeticExpression.push(firstVal);
+}
 function resetAllVar() {
-    aC.onclick = () => {
+    allClear.onclick = () => {
         calcInput.textContent = '';
         calcDisplay.textContent = '';
         firstVal = '';
     }
 }
-
-
 
 
 calculator();
