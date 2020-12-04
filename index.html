@@ -19,20 +19,20 @@
             <div id="buttons-container">
                 <button id="allClear" class="clear">AC</button>
                 <button id="clearEntry" class="clear">CE</button>
-                <button id="remainder" class="operators">Mod</button>
-                <button id="divide" class="operators">&#247</button>
+                <button id="remainder" class="operators" value="%">Mod</button>
+                <button id="divide" class="operators" value="/">&#247</button>
                 <button id="dig-7" class="digits">7</button>
                 <button id="dig-8" class="digits">8</button>
                 <button id="dig-9" class="digits">9</button>
-                <button id="multiply" class="operators">&#215</button>
+                <button id="multiply" class="operators" value="*">&#215</button>
                 <button id="dig-4" class="digits">4</button>
                 <button id="dig-5" class="digits">5</button>
                 <button id="dig-6" class="digits">6</button>
-                <button id="minus" class="operators">&#8722</button>
+                <button id="minus" class="operators" value="-">&#8722</button>
                 <button id="dig-1" class="digits">1</button>
                 <button id="dig-2" class="digits">2</button>
                 <button id="dig-3" class="digits">3</button>
-                <button id="add" class="operators">&#43</button>
+                <button id="add" class="operators" value="+">&#43</button>
                 <button id="plus-add" class="sign">&#177</button>
                 <button id="dig-0" class="digits">0</button>
                 <button id="decimal">.</button>
@@ -41,36 +41,6 @@
         </div>
     </div>
 </body>
-<script>
-    'use strict'
-
-    let arithmeticExpressions = {};
-
-    /*DOM Elements*/
-const allClear = document.getElementById('allClear');
-const clearChar = document.getElementById('clearEntry');
-const addition = document.getElementById('add');
-const substraction = document.getElementById('minus');
-const multiplication = document.getElementById('multiply');
-const division = document.getElementById('divide');
-const modulus = document.getElementById('remainder');
-const equal = document.getElementById('equal');
-const calcDisplay = document.getElementById('calc_display');
-const calcInput = document.getElementById('calc_input');
-const op = Array.from(document.querySelectorAll(".operators"));
-const digitNodeList = [...document.querySelectorAll(".digits")];
-
-    function evaluate(arr){
-        arr.map(e)
-    }
-
-    const getOp = (ope) => {
-    op.forEach(btn => btn.addEventListener("click", () => {
-        ope = btn.textContent;
-        calcDisplay.textContent += ope;
-        return ope;
-    }));
-}
-</script>
+<script src="script.js"></script>
 
 </html>
