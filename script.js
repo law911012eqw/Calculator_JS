@@ -19,13 +19,7 @@ Pseudocode (xxx) -- Difficulty and complexity by number of tabs
 
 */
 'use strict';
-/* global variables*/
-let arithmeticExpression = [];
-//let arExp = {};
-let total = 0;
-let firstVal = '';
-let secondVal = '';
-let op = '';
+let arithmeticArray = [];
 
 /*DOM Elements*/
 const allClear = document.getElementById('allClear');
@@ -40,91 +34,82 @@ const calcDisplay = document.getElementById('calc_display');
 const calcInput = document.getElementById('calc_input');
 const opArray = Array.from(document.querySelectorAll(".operators"));
 const digitNodeList = [...document.querySelectorAll(".digits")];
+const buttonArray = [...document.getElementsByTagName("button")];
 
-/*
-//functions inside the calculator function
-function calculator() {
+//let arithmeticArray = calcDisplay.textContent.split(""); 
+function calculator(){
+    let n =''; //num input
     let op = '';
-    digitInput();
-    getOp(op);
-    resetAllVar();
-    calcInput.textContent = customEval(op);
-    calcDisplay.textContent = printDisplay();
+    getDigits(n);
+    getOp(n,op);
+    resetAllVar(n,op);
+    someOperator(arithmeticArray);
+    console.table(arithmeticArray);
+    console.log(n);
 }
-
-function printDisplay(){
-    return arithmeticExpression.map((v,i,arr)=>{
-        return arr[i];
-    }).join(" ");
-}
-function customEval(op) {
-    equal.onclick = () => {
-
-        arithmeticExpression.push(ope);
-        return parseInt(firstVal) + op + parseInt(secondVal);
-    }
-}
-
-function simpleExpression(){
-    if (firstVal !== undefined){
-        arithmeticExpression.push(firstVal);
-    }
-    if (secondVal !== undefined)
-
-    arithmeticExpression.push(ope);
-    arithmeticExpression.push(secondVal);
-}
-function resetAllVar() {
-    allClear.onclick = () => {
-        // calcInput.textContent = '';
-        // calcDisplay.textContent = '';
-        // firstVal = '';
-        arithmeticExpression = [];
-    }
-}
-*/
 //It reads the input of the button text content when it is being clicked 
-function getDigits() {
+function getDigits(n) {
+    let arrLastEl = arithmeticArray[arithmeticArray.length-1];
+    n = '';
     digitNodeList.forEach(btn => btn.addEventListener("click", () => {
-        let tempVal="";
-        if(firstVal == "" && op == ""){
-            firstVal += btn.textContent;
-            tempVal = firstVal;
-        }else{
-            secondVal += btn.textContent;
-            tempVal = secondVal;
+        n += btn.textContent;
+        calcInput.textContent = n;
+        if(!isNaN(parseInt(arrLastEl))) 
+        {
+            arithmeticArray.shift(arrLastEl)
         }
-        arithmeticExpression.push(tempVal);
-        calcDisplay.textContent += btn.textContent;
+        arithmeticArray.push(n);
+        console.log(n);
+        printDisplay();
+        return n = '';
     }));
-    //arithmeticExpression.push(firstVal);
 }
-function resetAllVar() {
+
+//get the operator
+const getOp = (op,n) => {
+    opArray.forEach(btn => btn.addEventListener("click", () => {
+        //if the last value of the array is an operator therefore the function is skipped
+                op = btn.value;
+                arithmeticArray.push(op);
+                printDisplay();
+                return n ='';
+    }));
+}
+
+//it empties all variables  
+function resetAllVar(n,op) {
     allClear.onclick = () => {
         calcInput.textContent = '';
         calcDisplay.textContent = '';
-        firstVal = '';
-        arithmeticExpression = [];
+        op =''; 
+        n = '';
+        return arithmeticArray = [];     
     }
 }
-const getOp = () => {
-    opArray.forEach(btn => btn.addEventListener("click", () => {
-        op = btn.value;
-        calcDisplay.textContent += op;
-        arithmeticExpression.push(op);
-    }));
+
+function printDisplay(){
+    return calcDisplay.textContent = arithmeticArray.join("");
 }
-function customEval() {
-    let arr = arithmeticExpression.map((v) => {
-        return !isNaN(v) ? parseInt(v) : v;
+function customEval(op,a,b,arr) {
+    let newArr = arr.reduce((a,v,i,arr) => {
+        return i == 0 || i % 2 != 0 ? parseInt(v) :  v;
     });
     equal.onclick = () => {
-        return arr.reduce()
+        calcInput = whichArithmetic(op,a,b);
     }
 }
-getDigits();
-getOp();
-resetAllVar();
-total = customEval(op);
-calcInput.textContent = total;
-//calculator();
+function someOperator(arr){
+    return arr.some(e => e == "/" || e == "*" || e == "-" || e == "+");
+}
+//object of operators -- use to compare to a value and returns the followring arithmetic expressions
+function whichArithmetic(op,a,b){
+        let arithmeticObj = {
+          "*": a * b,
+          "/": a / b,
+          "+": a + b,
+          "-": a - b
+        };
+        return arithmeticObj[op];
+}
+
+calculator();
