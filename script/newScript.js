@@ -5,7 +5,6 @@ It is a group of processes that works together to self-build an on-screen calcul
 Programmed by: Beaver Antipolo
 Restart Date: Dec 05 2020 -- Got lost in track have to start from the scratch
 Last Modification Date: Dec 05 2020
-
 */
 
 'use strict';
@@ -29,12 +28,14 @@ function calculate(op, a, b) {
     };
     return arithmeticObj[op];
 }
-function convertArithmeticIntoArray() {
-    
+/*It's functionality is to ranked the order of each operators in terms of precedence. 
+    The highest ranked will be the first set of simple arithmetic expression to return its result.*/
+function supersedeOperators(){
+
 }
 //compare operator then calculate the final total
-function findOperator(){
-    let str = calcDisplay.textContent.split("");
+function findOperator() {
+    let str = calcDisplay.textContent.split(" ");
     console.log(str);
     return str.reduce((p, v, i, arr) => {
         if (v == "%" || v == "/" || v == "*" || v == "+" || v == "-") {
@@ -47,18 +48,30 @@ function findOperator(){
         // }
     })
 }
-
+function listOfOperators(){
+    let arr = ["%","*","/","+","-"];
+    return arr.forEach(el => el);
+}
 //display clicked digit inputs
 digitNodeList.forEach(btn => btn.addEventListener("click", () => {
     calcDisplay.textContent += btn.textContent;
 }))
 //display clicked digit inputs
 opArray.forEach(btn => btn.addEventListener("click", () => {
-    calcDisplay.textContent += btn.value;
+    //adds a whitespace in-between the operator used as a split character for later
+    if (calcDisplay.textContent !== "" || calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == ` `){
+        calcDisplay.textContent += ` ${btn.value} `;
+    }
 }))
 allClear.onclick = () => {
     calcInput.textContent = '';
     calcDisplay.textContent = '';
+}
+//remove last character on display text
+clearChar.onclick = () => {
+    calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == " "
+    ? calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 2) //if equals to a whitespace remove the preceding char aswell
+    : calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1); //remove last character of the display text
 }
 //total input
 equal.onclick = () => findOperator();
