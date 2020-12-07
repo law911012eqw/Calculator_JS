@@ -85,7 +85,7 @@
         display: inline-block;
         background: var(--darkerGreen);
         margin: 0 auto;
-        height: 60vh;
+        height: 64vh;
         border-radius: 9%;
         box-shadow: 2px 4px 7px var(--shadow);
     }
@@ -102,19 +102,21 @@
         box-shadow: inset 1px 2px 8px var(--shadow);
     }
     #calc_display{
+        margin-top: 10px;
         display: inline-block;
-        flex-grow:1;
+        flex-grow: 4;
         font-size: 140%;
+        text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #calc_input{
         display: inline-block;
-        flex-grow:2;
+        flex-grow: 1;
         font-size: 200%;
+        text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #buttons-container{
         display: grid;
         justify-content: center;
-        height: 35vh;
         margin: 25px 50px;
         grid-template-columns: repeat(4, 24% [col-start]);
         gap: 4%;  
