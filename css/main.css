@@ -1,6 +1,7 @@
     /*variables*/
     :root{
         --darkerGreen: rgb(34, 36, 35);
+        --emeraldGreen: rgb(80, 200, 120);
         --shadow: rgb(11, 14, 12);
         --lowRGBWhite: rgb(180,180,180);
         --defaultButtonColor: rgba(73, 162, 162, 0.7);
@@ -9,19 +10,24 @@
     }
     
     /*global selectors*/
-    /* rgba 45deg,  rgba(24, 34, 14, 0.9), rgba(15, 55, 20, 0.7), rgba(13, 56, 31,.4) 78%)*/
+    /* -webkit-linear-gradient(45deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6), rgba(59, 60, 58,.3) 80%)*/
     html{
-        background: -webkit-linear-gradient(45deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6), rgba(59, 60, 58,.3) 80%), 
-                    -webkit-linear-gradient(135deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6),rgba(59, 60, 58,.3) 80%), 
-                    -webkit-linear-gradient(225deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6),rgba(59, 60, 58,.3) 80%), 
-                    -webkit-linear-gradient(315deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6),rgba(59, 60, 58,.3) 80%); 
+        background: -webkit-linear-gradient(45deg,  rgba(3, 66, 24, 0.6),  rgb(80, 200, 120) 80%), 
+                    -webkit-linear-gradient(135deg,  rgb(0, 0, 0), rgb(80, 200, 120) 80%), 
+                    -webkit-linear-gradient(225deg,  rgb(0, 0, 0),   rgb(80, 200, 120) 80%), 
+                    -webkit-linear-gradient(315deg, rgb(0, 10, 1),  rgb(80, 200, 120) 80%); 
         background-attachment: fixed;
+        -khtml-user-select: none;
+        -o-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
 
         /*font-family: 'Nunito Sans', sans-serif;*/
     }
     div{
         font-family: 'Nunito Sans', sans-serif;
-        color: var(--defaultParaColor);
+        color: rgb(103, 207, 136);
     }
     /*button section*/
     button{
@@ -48,7 +54,7 @@
     button:focus{
         outline: none;
     }
-    .digits:hover, #decimal:hover, #plus-add:hover{
+    .digits:hover, .non:hover{
         background: var(--defaultButtonHoverColor);
         color: black;
     }
@@ -64,11 +70,17 @@
     .clear:hover{
         background: rgb(161,121,68);
     }
+    .factorial{
+        background: rgba(31, 76, 143,0.7);
+    }
+    .factorial:hover{
+        background: rgb(31, 76, 143);
+    }
     #equal{
-        background: rgba(73,161,9,0.7);
+        background: rgba(42, 156, 69,0.7);
     }
     #equal:hover{
-        background: rgb(73,161,9);
+        background:   rgb(42, 156, 69);
     }
     div{
         margin: 0 auto;
@@ -77,6 +89,7 @@
     #calc_container{
         display: flex;
         /*background: red;*/
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -87,8 +100,8 @@
         width: 400px;
         margin: 0 auto;
         height: 540px;
-        border-radius: 9%;
-        box-shadow: 2px 4px 7px var(--shadow);
+        border-radius: 6%;
+        box-shadow: 3px 4px 11px var(--shadow);
     }
     #calc_screen{
         display: flex;
@@ -107,13 +120,13 @@
         margin-top: 10px;
         display: inline-block;
         flex-grow: 4;
-        font-size: 120%;
+        font-size: 140%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #calc_input{
         display: inline-block;
         flex-grow: 1;
-        font-size: 170%;
+        font-size: 190%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #buttons-container{
