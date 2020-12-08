@@ -26,8 +26,6 @@ const screenPrecedence = document.getElementById('screenPrecedence');
 let allowDecimal = true;
 let allowOp = false;
 let operatorPrecedence = false;
-let tempArr = calcDisplay.textContent;
-calcDisplay.textContent = tempArr.split(" ");
 let strWithoutWhitespace = "";
 //return the simple arithmetic expressions associated with the operator
 function calculate(op, a, b) {
@@ -121,15 +119,16 @@ digitNodeList.forEach(btn => btn.addEventListener("click", () => {
 opArray.forEach(btn => btn.addEventListener("click", () => {
     //adds a whitespace in-between the operator used as a split delimiter for later
     allowDecimal = true;
-    if (previousOp() == true) {
+    if (previousOp() == true && allowOp == true) {
         calcDisplay.textContent += ` ${btn.value} `;
+        allowOp = false;
     }
     //allowOp = false;
 }));
 
 //limits the usability of the operator 
 function previousOp() {
-    return calcDisplay.textContent.length != 0 || calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1).match(/\w/g) ? true : false;
+    return calcDisplay.textContent.length != 0 ? true : false;
 }
 
 //switch to positive or negative number
@@ -150,7 +149,6 @@ posNegBtn.onclick = () => {
 decimalBtn.onclick = () => {
     if (allowDecimal === true) {
         calcDisplay.textContent += ".";
-        //calcInput.textContent += ".";
     }
     allowDecimal = false;
 };
@@ -182,10 +180,14 @@ allClearBtn.onclick = () => {
 
 //remove last character on display text
 clearCharBtn.onclick = () => {
-    calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == " "
-        ? calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 3) //if equals to a whitespace remove the preceding char aswell
-        : calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1); //remove last character of the display text
-    //calcInput.textContent = calcInput.textContent.substring(0, calcInput.textContent.length - 1)
+    if (calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == " "){
+        calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 3); //if equals to a whitespace remove the preceding char aswell
+        allowOp = true;
+    }
+    else{
+        calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1); //remove last character of the display text
+        allowOp = false;
+    }
     calcInput.textContent = '';
 }
 
