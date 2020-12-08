@@ -27,7 +27,7 @@
     }
     div{
         font-family: 'Nunito Sans', sans-serif;
-        color: rgb(103, 207, 136);
+        color: rgb(175, 224, 41);
     }
     /*button section*/
     button{
@@ -110,10 +110,17 @@
         flex-wrap: wrap;
         flex-flow: column;
         height: 100px;
-        margin: 40px 40px 20px 40px;
+        margin: 40px 40px 1px 40px;
         border-radius: 9%;
         text-align: right;
         box-shadow: inset 1px 2px 8px var(--shadow);
+    }
+    #calc_status{
+        overflow: hidden;
+        display: inline-block;
+        flex-grow: 3;
+        font-size: 140%;
+        text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #calc_display{
         overflow: hidden;
@@ -124,15 +131,39 @@
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
     #calc_input{
+        overflow: hidden;
         display: inline-block;
         flex-grow: 1;
         font-size: 190%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
+    #calc-mid{
+        display: flex;
+        justify-content: start;
+        margin: 0 37px;
+    }
+    #calc-mid > button{
+        font-size: 65%;
+        border-radius: 15%;
+        background: rgb(99, 2, 2);
+        color: white;
+        border: 0;
+        width: 65px;
+        height: 17px;  
+        transition: 0.1s;
+        margin: 3px 5px;
+        box-shadow: 1.5px 3px 4px var(--shadow);
+        overflow: auto;
+    }
+    #calc-mid > button:active{
+        transform: translate(0, 2px);
+        box-shadow: 1px 2px 4px var(--shadow);  
+        opacity: 0.8;
+    }
     #buttons-container{
         display: grid;
         justify-content: center;
-        margin: 25px 50px;
+        margin: 2px 50px;
         grid-template-columns: repeat(4, 24% [col-start]);
         gap: 4%;  
     }
