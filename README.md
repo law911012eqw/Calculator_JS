@@ -8,8 +8,15 @@ This calculator supports the following operators and functionalities:
 
 #### Functionalities
 * AC- Clearing all variables,inputs and switching to defaults
-* C - backspace
+* (<--) - backspace
 * ! - factorial
 * (+-) - switching to a positive/negative number
 * (.) - decimal point
 * (a+(b*c)) - enable/disable operator precedence
+
+#### Keyboard Support
+List of hidden or unclear key inputs: 
+*'s' - (+-)
+*'Enter' - (=)
+*'Backspace' - (<--)
+*'Delete' - AC
