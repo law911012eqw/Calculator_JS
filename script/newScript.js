@@ -204,7 +204,7 @@ document.addEventListener('keydown', function (event) {
         document.getElementById('add').click();
     }
     else if(event.key === '-'){
-        document.getElementById('substract').click();
+        document.getElementById('subtract').click();
     }
     else if (event.key === 's') {
         posNegBtn.click();
