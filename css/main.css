@@ -10,7 +10,6 @@
     }
     
     /*global selectors*/
-    /* -webkit-linear-gradient(45deg,  rgba(32, 32, 32, 0.9), rgba(44, 44, 44, 0.6), rgba(59, 60, 58,.3) 80%)*/
     html{
         background: -webkit-linear-gradient(45deg,  rgba(3, 66, 24, 0.6),  rgb(80, 200, 120) 80%), 
                     -webkit-linear-gradient(135deg,  rgb(0, 0, 0), rgb(80, 200, 120) 80%), 
@@ -24,10 +23,6 @@
         user-select: none;
 
         /*font-family: 'Nunito Sans', sans-serif;*/
-    }
-    div{
-        font-family: 'Nunito Sans', sans-serif;
-        color: rgb(175, 224, 41);
     }
     /*button section*/
     button{
@@ -85,7 +80,7 @@
     div{
         margin: 0 auto;
     }
-
+    /*container for calculator */
     #calc_container{
         display: flex;
         /*background: red;*/
@@ -95,7 +90,6 @@
         text-align: center;
     }
     #calculator{
-        display: absolute;
         background: var(--darkerGreen);
         width: 400px;
         margin: 0 auto;
@@ -106,7 +100,6 @@
     #calc_screen{
         display: flex;
         background: rgb(49, 51, 48);
-        /*background: -webkit-linear-gradient(135deg, rgb(54, 57, 58), rgba(49, 51, 48) 90%);*/
         flex-wrap: wrap;
         flex-flow: column;
         height: 100px;
@@ -115,28 +108,44 @@
         text-align: right;
         box-shadow: inset 1px 2px 8px var(--shadow);
     }
+    /*shows warning and current functionality state such as operatore precedence*/
     #calc_status{
+        color: rgb(47, 49, 46);
         overflow: hidden;
-        display: inline-block;
-        flex-grow: 3;
-        font-size: 140%;
-        text-shadow: 0 0 3px var(--defaultParaColor);
+        flex-grow: 1;
+        font-size: 55%;
     }
+    #calc_status > div{
+        text-align: left;
+        margin: 5px 0 0 31px;
+        height: inherit;
+    }
+    .opPrecedence{
+        font-family: 'Nunito Sans', sans-serif;
+        color: rgb(160, 236, 18);
+    }
+    /* displays the arithmetic expressions*/
     #calc_display{
+        font-family: 'Nunito Sans', sans-serif;
+        color: rgb(160, 236, 18);
         overflow: hidden;
         margin-top: 10px;
         display: inline-block;
         flex-grow: 4;
-        font-size: 140%;
+        font-size: 120%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
+    /*display the total*/
     #calc_input{
+        font-family: 'Nunito Sans', sans-serif;
+        color: rgb(160, 236, 18);
         overflow: hidden;
         display: inline-block;
-        flex-grow: 1;
+        flex-grow: 4;
         font-size: 190%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
+    /*upper section of the buttons*/
     #calc-mid{
         display: flex;
         justify-content: start;
@@ -160,6 +169,7 @@
         box-shadow: 1px 2px 4px var(--shadow);  
         opacity: 0.8;
     }
+    /*container for buttons*/
     #buttons-container{
         display: grid;
         justify-content: center;
