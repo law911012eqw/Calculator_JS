@@ -16,7 +16,7 @@ This calculator supports the following operators and functionalities:
 
 #### Keyboard Support
 List of hidden or unclear key inputs: 
-*'s' - (+-)
-*'Enter' - (=)
-*'Backspace' - (<--)
-*'Delete' - AC
+* 's' - (+-)
+* 'Enter' - (=)
+* 'Backspace' - (<--)
+* 'Delete' - AC
