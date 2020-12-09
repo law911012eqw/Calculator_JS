@@ -199,10 +199,10 @@ document.addEventListener('keydown', function (event) {
     else if(event.key === '/'){
         document.getElementById('divide').click();
     }
-    else if(event.key === '*'){
+    else if(event.key === '*' || event.key === 'x'){
         document.getElementById('multiply').click();
     }
-    else if(event.key === '+'){
+    else if(event.key === '+' || event.key === 't' ){
         document.getElementById('add').click();
     }
     else if(event.key === '-'){
@@ -217,7 +217,7 @@ document.addEventListener('keydown', function (event) {
     else if (event.key === 'Backspace') {
         clearCharBtn.click();
     }
-    else if (event.key === 'Delete' && event.key !== ' ') {
+    else if (event.key === 'Delete') {
         allClearBtn.click();
     }
     else if (event.key === '.') {
