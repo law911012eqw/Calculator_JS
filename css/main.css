@@ -108,20 +108,22 @@
         text-align: right;
         box-shadow: inset 1px 2px 8px var(--shadow);
     }
-    /*shows warning and current functionality state such as operatore precedence*/
+    /*shows current functionality state such as operatore precedence*/
     #calc_status{
+        display: flex;
         color: rgb(47, 49, 46);
+        font-family: 'Nunito Sans', sans-serif;
         overflow: hidden;
-        flex-grow: 1;
         font-size: 55%;
     }
     #calc_status > div{
-        text-align: left;
-        margin: 5px 0 0 31px;
+        margin: 5px 0 0 25px;
         height: inherit;
     }
     .opPrecedence{
-        font-family: 'Nunito Sans', sans-serif;
+        color: rgb(160, 236, 18);
+    }
+    .screenDAR{
         color: rgb(160, 236, 18);
     }
     /* displays the arithmetic expressions*/
@@ -132,7 +134,7 @@
         margin-top: 10px;
         display: inline-block;
         flex-grow: 4;
-        font-size: 120%;
+        font-size: 117%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
     /*display the total*/
@@ -142,7 +144,7 @@
         overflow: hidden;
         display: inline-block;
         flex-grow: 4;
-        font-size: 190%;
+        font-size: 185%;
         text-shadow: 0 0 3px var(--defaultParaColor);
     }
     /*upper section of the buttons*/
