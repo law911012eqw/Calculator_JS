@@ -20,12 +20,15 @@ const posNegBtn = document.getElementById('plus-add');
 const decimalBtn = document.getElementById('decimal');
 const factorialBtn = document.getElementById('factorial');
 const switchPref = document.getElementById('opPrecedence');
+const switchDisplay = document.getElementById('displayAsResult');
 const screenPrecedence = document.getElementById('screenPrecedence');
+const screenDAR = document.getElementById('screenDAR');
 
 //limiters
 let allowDecimal = true;
 let allowOp = false;
 let operatorPrecedence = false;
+let DAR = false;
 let strWithoutWhitespace = "";
 //return the simple arithmetic expressions associated with the operator
 function calculate(op, a, b) {
@@ -74,6 +77,7 @@ function evaluateSimple() {
     }
     if (arr[0].toString().indexOf('.') > -1) {
         let finalResult = arr[0].toFixed(2);
+        //calcDisplay.textContent = finalResult;
         return calcInput.textContent = finalResult;
     }
     else {
@@ -123,7 +127,7 @@ opArray.forEach(btn => btn.addEventListener("click", () => {
         calcDisplay.textContent += ` ${btn.value} `;
         allowOp = false;
     }
-    //allowOp = false;
+    calcInput.textContent = '';
 }));
 
 //limits the usability of the operator 
@@ -180,11 +184,11 @@ allClearBtn.onclick = () => {
 
 //remove last character on display text
 clearCharBtn.onclick = () => {
-    if (calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == " "){
+    if (calcDisplay.textContent.charAt(calcDisplay.textContent.length - 1) == " ") {
         calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 3); //if equals to a whitespace remove the preceding char aswell
         allowOp = true;
     }
-    else{
+    else {
         calcDisplay.textContent = calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1); //remove last character of the display text
         allowOp = false;
     }
@@ -196,7 +200,7 @@ document.addEventListener('keydown', function (event) {
     if (!isNaN(event.key)) {
         document.getElementById(`dig-${event.key}`).click();
     }
-    else if(event.key === '/'){
+    else if (event.key === '/') {
         document.getElementById('divide').click();
     }
     else if(event.key === '*' || event.key === 'x'){
@@ -205,7 +209,7 @@ document.addEventListener('keydown', function (event) {
     else if(event.key === '+' || event.key === 't' ){
         document.getElementById('add').click();
     }
-    else if(event.key === '-'){
+    else if (event.key === '-') {
         document.getElementById('subtract').click();
     }
     else if (event.key === 's') {
@@ -234,5 +238,20 @@ switchPref.onclick = () => {
     calcInput.textContent = "";
 }
 
+switchDisplay.onclick = () => {
+    DAR === true ? DAR = false : DAR = true;
+    screenDAR.classList.toggle('screenDAR');
+}
+
 //finalize result
-equal.onclick = () => operatorPrecedence == true ? evaluateComplex() : evaluateSimple();
+equal.onclick = () => {
+    if (operatorPrecedence == true) {
+        evaluateComplex();
+    }
+    else {
+        evaluateSimple();
+    }
+    if (DAR == true) {
+        calcDisplay.textContent = calcInput.textContent;
+    }
+}
